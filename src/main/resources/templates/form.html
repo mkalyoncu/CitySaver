@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/form.css}">
+</head>
+<script>
+    function disableButton() {
+        $('#submit').css("background-color", "#6eb071");
+        $('#submit').prop('disabled', true);
+    }
+</script>
+<body>
+<h2>City and District Form</h2>
+<div class="container">
+    <form th:action="@{/form}" id="form" th:object="${retrievedData}" th:onsubmit="disableButton()"
+          th:method="post">
+        <div class="row-center">
+            <p class="message" th:text="${message}"></p>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="city">City</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="city" name="city" th:value="${city}" placeholder="Istanbul">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="district">District</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="district" name="district" th:value="${district}" placeholder="Levent">
+            </div>
+        </div>
+        <!--        <div class="col-25-right">-->
+        <!--            <select id="city" name="city">-->
+        <!--                <option th:each="broken : ${T(com.citysaver.apps.model.RetrievedData.City).values()}"-->
+        <!--                        th:value="${city}"-->
+        <!--                        th:text="${city.cityName}">-->
+        <!--                </option>-->
+        <!--            </select>-->
+        <!--        </div>-->
+        <div class="row">
+            <input type="submit" value="SUBMIT">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

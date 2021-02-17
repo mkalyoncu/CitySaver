@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/list.css}">
+</head>
+<body>
+<div class="content-form">
+    <h4>CITY</h4>
+    <table id="table">
+        <thead>
+        <tr>
+            <th> Id</th>
+            <th> City Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${cities.empty}">
+            <td colspan="2"> No city is available</td>
+        </tr>
+        <tr th:each="city : ${cities}">
+            <td><span th:text="${city.id}"> Id </span></td>
+            <td><span th:text="${city.name}"> Name </span></td>
+        </tr>
+        </tbody>
+    </table>
+    <h4>DISTRICT</h4>
+    <table id="table">
+        <thead>
+        <tr>
+            <th> Id</th>
+            <th> District Name</th>
+            <th> City Id</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${districts.empty}">
+            <td colspan="2"> No district is available</td>
+        </tr>
+        <tr th:each="dist : ${districts}">
+            <td><span th:text="${dist.id}"> Id </span></td>
+            <td><span th:text="${dist.name}"> Name </span></td>
+            <td><span th:text="${dist.cityId}"> City Id </span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</body>
+</html>
